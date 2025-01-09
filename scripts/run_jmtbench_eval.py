@@ -31,7 +31,6 @@ run = wandb.init(
     project=cfg_dict['wandb']['project'],
     name=cfg_dict['wandb']['run_name'],
     config=cfg_dict,
-    job_type="evaluation",
 )
 
 # Initialize the WandbConfigSingleton
@@ -61,7 +60,7 @@ if cfg.wandb.log:
 
 # 2. mt-bench evaluation
 mtbench_evaluate()
-# cleanup_gpu()
+cleanup_gpu()
 
 # Logging results to W&B
 if cfg.wandb.log and run is not None:
