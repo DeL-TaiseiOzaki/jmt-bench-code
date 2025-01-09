@@ -1,18 +1,17 @@
 wandb:
   log: True
-  entity: "weblab-geniac1"
-  project: "leaderboard_test"
-  run_name: "YOUR_RUN_NAME"
+  entity: "llm-eval"
+  project: "jmt-bench"
 
 testmode: false
 
-api: false  # API呼び出し(OpenAI等)を使わず、ローカルモデルを使う
+api: false
 
 model:
   use_wandb_artifacts: false
   artifacts_path: ""
   # ↓ ここをHuggingFace上のモデル名にする。（例: "meta-llama/Llama-2-7b-hf"）
-  pretrained_model_name_or_path: "your-huggingface-repo/model-name"
+  pretrained_model_name_or_path: "Qwen/Qwen2.5-72B-Instruct"
   trust_remote_code: true
   device_map: "auto"
   load_in_8bit: false
@@ -29,11 +28,11 @@ generator:
 tokenizer:
   use_wandb_artifacts: false
   artifacts_path: ""
-  pretrained_model_name_or_path: "your-huggingface-repo/model-name"
+  pretrained_model_name_or_path: "Qwen/Qwen2.5-72B-Instruct "
   use_fast: false
 
 # jaster等の評価を行わない or 同時に行う設定なら以下を調整
-max_seq_length: 2048
+max_seq_length: 1024
 dataset_artifact: null
 dataset_dir: null
 target_dataset: "all"
@@ -43,7 +42,7 @@ custom_prompt_template: null
 custom_fewshots_template: null
 
 metainfo:
-  basemodel_name: "username/model_name" # モデル名を記載
+  basemodel_name: "Qwen/Qwen2.5-72B-Instruct " # モデル名を記載
   model_type: "open llm"
   instruction_tuning_method: "None"
   instruction_tuning_data: ["None"]
@@ -66,7 +65,7 @@ mtbench:
   num_gpus_total: 1
   max_gpu_memory: null
   dtype: bfloat16 
-  judge_model: "gpt-4o-mini-"  # 内部で使用する評価モデル
+  judge_model: "gpt-4o-mini"  # 内部で使用する評価モデル
   mode: "single"
   baseline_model: null
   parallel: 1
