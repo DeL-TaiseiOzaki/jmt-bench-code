@@ -84,30 +84,30 @@ def mtbench_evaluate():
 
         cfg.model.pretrained_model_name_or_path = model_path
     
-    # 1. generate model answers
-    if cfg.api in ["openai","anthoropic","cohere","google","amazon_bedrock","mistral"]:
-        questions = load_questions(question_file, None, None)
-        get_api_answer(
-            question_file=question_file,
-            answer_file=answer_file
-        )
-    else:
-        run_eval(
-            model_path=cfg.model.pretrained_model_name_or_path,
-            model_id=cfg.mtbench.model_id,
-            question_file=question_file,
-            question_begin=cfg.mtbench.question_begin,
-            question_end=cfg.mtbench.question_end,
-            answer_file=answer_file,
-            max_new_token=cfg.mtbench.max_new_token,
-            num_choices=cfg.mtbench.num_choices,
-            num_gpus_per_model=cfg.mtbench.num_gpus_per_model,
-            num_gpus_total=cfg.mtbench.num_gpus_total,
-            max_gpu_memory=cfg.mtbench.max_gpu_memory,
-            dtype=str_to_torch_dtype(cfg.mtbench.dtype),
-            revision="main",
-            cfg=cfg,
-        )
+    # # 1. generate model answers
+    # if cfg.api in ["openai","anthoropic","cohere","google","amazon_bedrock","mistral"]:
+    #     questions = load_questions(question_file, None, None)
+    #     get_api_answer(
+    #         question_file=question_file,
+    #         answer_file=answer_file
+    #     )
+    # else:
+    #     run_eval(
+    #         model_path=cfg.model.pretrained_model_name_or_path,
+    #         model_id=cfg.mtbench.model_id,
+    #         question_file=question_file,
+    #         question_begin=cfg.mtbench.question_begin,
+    #         question_end=cfg.mtbench.question_end,
+    #         answer_file=answer_file,
+    #         max_new_token=cfg.mtbench.max_new_token,
+    #         num_choices=cfg.mtbench.num_choices,
+    #         num_gpus_per_model=cfg.mtbench.num_gpus_per_model,
+    #         num_gpus_total=cfg.mtbench.num_gpus_total,
+    #         max_gpu_memory=cfg.mtbench.max_gpu_memory,
+    #         dtype=str_to_torch_dtype(cfg.mtbench.dtype),
+    #         revision="main",
+    #         cfg=cfg,
+    #     )
 
     # 2. evaluate outputs
     ## Load questions

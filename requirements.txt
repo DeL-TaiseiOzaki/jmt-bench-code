@@ -1,0 +1,20 @@
+# モデル推論およびデータ処理
+torch
+numpy
+tqdm
+
+# 評価フレームワーク関連
+fastchat
+omegaconf
+
+# 並列実行
+ray
+
+# ログ/Artifact管理
+wandb
+
+# Hugging Face関連（Hugging Faceリポジトリからモデルを読み込む場合）
+huggingface_hub
+
+# vLLM (高速推論に利用する場合)
+vllm
