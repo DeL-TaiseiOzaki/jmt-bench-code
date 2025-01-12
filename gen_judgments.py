@@ -10,7 +10,7 @@ def load_jsonl(filename):
 
 def main(args):
     # OpenAI クライアントを初期化（api_key を渡す）
-    client = OpenAI(api_key=args.api_key)
+    client = OpenAI()
 
     # 各種 JSONL ファイルを読み込み
     questions = load_jsonl(args.question_file)
@@ -79,14 +79,13 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--question_file", type=str, default="data/mt_bench/question.jsonl")
-    parser.add_argument("--answer_file", type=str, default="data/mt_bench/model_answer/temp_answer.jsonl")
-    parser.add_argument("--prompt_file", type=str, default="data/mt_bench/judge_prompts.jsonl")
-    parser.add_argument("--output_file", type=str, default="data/mt_bench/model_judgment/temp_judgment.jsonl")
+    parser.add_argument("--question-file", type=str, default="data/mt_bench/question.jsonl")
+    parser.add_argument("--answer-file", type=str, default="data/mt_bench/model_answer/temp_answer.jsonl")
+    parser.add_argument("--prompt-file", type=str, default="data/mt_bench/judge_prompts.jsonl")
+    parser.add_argument("--output-file", type=str, default="data/mt_bench/model_judgment/temp_judgment.jsonl")
     parser.add_argument("--model", type=str, default="gpt-4-1106-preview", help="OpenAI model to use for judgment")
     parser.add_argument("--max_tokens", type=int, default=1024, help="Max tokens for the generated judgment")
-    parser.add_argument("--temperature", type=float, default=0.2, help="Temperature for sampling")
-    parser.add_argument("--api_key", type=str, help="OpenAI API key")
+    parser.add_argument("--temperature", type=float, default=0, help="Temperature for sampling")
     args = parser.parse_args()
 
     main(args)

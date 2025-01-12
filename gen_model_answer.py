@@ -28,7 +28,8 @@ def main(args):
     llm = vllm.LLM(
         model=args.model_path,
         tensor_parallel_size=args.num_gpus_per_model,
-        max_model_len=1024
+        max_model_len=1024,
+        gpu_memory_utilization=0.99
     )
 
     # 4. サンプリングパラメータの設定
